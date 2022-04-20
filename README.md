@@ -1,5 +1,11 @@
 # Welcome
 
+Install Packages
+> yarn
+
+To run this app
+> yarn start
+
 ## Assignment
 
 Create a ReactJS app that lets you see a list of members, a list of teams and a To-do list.
