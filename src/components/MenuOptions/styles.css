@@ -1,0 +1,49 @@
+.menu-options {
+    background: transparent;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    margin: 12px 12px 0 0;
+}
+
+
+.menu-options-btn span {
+    display: block;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    width: 5px;
+    height: 5px;
+    margin-top: 4px;
+
+}
+
+.menu-options nav {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    width: 100px;
+    padding: 0 8px;
+    left: -100px;
+    top: 55px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+.menu-options nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: #777;
+    margin-top: 8px;
+    padding: 8px 0;
+}
+
+.menu-options nav ul li {
+    border-top: 1px solid #ccc;
+
+}
+
+.menu-options nav ul li:first-child {
+    border-top: none;
+}

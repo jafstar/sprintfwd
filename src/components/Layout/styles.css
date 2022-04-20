@@ -1,0 +1,119 @@
+#logo {
+    padding: 16px;
+}
+
+#logo a {
+    display: block;
+    width: 120px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 34px;
+    font-variant: small-caps;
+}
+
+#logo span {
+    color: #FFF85A;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+
+@media (max-width: 950px) {
+
+    #navigation-main {
+        position: fixed;
+        bottom: 0px;
+        z-index: 999;
+        background: #000;
+    }
+
+
+    #navigation-main nav ul {
+        display: flex;
+        justify-content: space-around;
+        width: 100vw;
+        align-items: end;
+
+    }
+
+    #navigation-main nav ul a {
+        text-decoration: none;
+        color: #ccc;
+        font-variant: small-caps;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        background: rgba(96, 96, 96, .1);
+        padding: 50px 10px 20px 10px;
+        width: 28vw;
+        display: block;
+        text-align: center;
+        border-top: 1px solid #777;
+        border-left: 1px solid #777;
+    }
+
+    #navigation-main nav ul li:first-child a {
+        border-left: none;
+    }
+
+    #navigation-main nav ul a.active {
+        background: rgba(196, 196, 196, .5);
+        padding: 50px 10px 20px 10px;
+        color: #fff;
+    }
+
+    .menu-icon-text {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 40px;
+        justify-content: space-between;
+    }
+
+}
+
+
+
+@media (min-width: 951px) {
+
+    #navigation-main {
+        position: fixed;
+        top: 0px;
+        right: 180px;
+        z-index: 999;
+        background: transparent;
+    }
+
+    #navigation-main nav ul {
+        display: flex;
+        justify-content: space-around;
+        width: 530px;
+        align-items: center;
+
+    }
+
+    #navigation-main nav ul a {
+        text-decoration: none;
+        color: #ccc;
+        font-variant: small-caps;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+
+        padding: 50px 10px 20px 10px;
+        width: 100px;
+        display: block;
+        text-align: center;
+        /* border-bottom: 1px solid #777;
+        border-left: 1px solid #777;
+        background: rgba(96, 96, 96, .1); */
+    }
+
+    #navigation-main nav ul a.active {
+        background: rgba(196, 196, 196, .5);
+        padding: 50px 10px 20px 10px;
+        color: #fff;
+    }
+
+    .menu-icon-text i {
+        display: none;
+    }
+}
