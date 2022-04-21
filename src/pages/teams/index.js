@@ -45,7 +45,7 @@ const Teams = () => {
                                         </div>
                                         <div>
                                             <h3>{itm.name}</h3>
-                                            <p># Members:{itm.member_count}</p>
+                                            <p># Members: {itm.member_count}</p>
                                         </div>
                                     </div>
 
