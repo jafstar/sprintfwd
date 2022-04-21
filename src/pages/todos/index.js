@@ -13,8 +13,9 @@ const ToDos = () => {
     const ctx = React.useContext(ToDosContext)
 
 
-    const [currentInput, setCurrentInput] = React.useState("");
+    const [currentInput, setCurrentInput] = React.useState("")
     const [currentListType, setcurrentListType] = React.useState("active")
+    const [localList, setLocalList] = React.useState([])
 
     const handleAddBtn = () => {
 
@@ -25,7 +26,8 @@ const ToDos = () => {
 
         const newItem = {
             uid: uuidv4(),
-            title: currentInput
+            title: currentInput,
+            completed: false
         }
         ctx.setTodoList([
             ...ctx.todoList,
@@ -33,6 +35,7 @@ const ToDos = () => {
         ])
 
         setCurrentInput("");
+        setcurrentListType("active")
     }
 
     const handleInput = (val) => {
@@ -43,16 +46,37 @@ const ToDos = () => {
         setcurrentListType(listType)
     }
 
-    const handleCompleteItem = (itemUID) => {
+    const handleCheckbox = (isChecked, itemUID) => {
+
+        const newLocalList = localList.map(itm => {
+            if (itm.uid === itemUID) {
+                return {
+                    ...itm,
+                    completed: isChecked
+                }
+            } else {
+                return itm
+            }
+        })
+
+        setLocalList([
+            ...newLocalList,
+        ])
 
         setTimeout(() => {
             ctx.completeTodoItem(itemUID)
-            setcurrentListType("archive") // Cheap Fix for checkbox bug
         }, 400)
+    }
 
+    const handleUndo = () => {
 
     }
 
+    React.useEffect(() => {
+        if (ctx.todoList) {
+            setLocalList([...ctx.todoList])
+        }
+    }, [ctx])
 
 
     return (
@@ -84,17 +108,17 @@ const ToDos = () => {
 
 
                 {
-                    currentListType === "active" && ctx.todoList.length >= 1 && ctx.todoList.map((itm, idx) => {
+                    currentListType === "active" && localList.length >= 1 && localList.map((itm, idx) => {
                         return (
                             <div className="list-item-shell" key={`table-row-${idx}`}>
 
                                 <div className="list-item">
                                     <div className='list-item-header'>
-                                        <div className="flex">
+                                        <div className="flex w100">
                                             <div className='list-item-col-left'>
 
                                                 <label className="checkbox-shell">
-                                                    <input type="checkbox" onClick={() => handleCompleteItem(itm.uid)} />
+                                                    <input type="checkbox" checked={itm.completed} onChange={(evt) => handleCheckbox(evt.target.checked, itm.uid)} />
                                                     <span className="checkbox-span"></span>
                                                 </label>
 
@@ -122,7 +146,7 @@ const ToDos = () => {
                 }
 
                 {
-                    currentListType === "active" && ctx.todoList.length === 0
+                    currentListType === "active" && localList.length === 0
                         ? (
                             <div className="list-item-none">No items in the list!</div>
                         )
@@ -143,8 +167,13 @@ const ToDos = () => {
 
                                             <div className='flex space-between align-center w100'>
                                                 <h3>{itm.title}</h3>
-                                                <span className="todo-date">{new Date().toDateString()}</span>
-
+                                                <div>
+                                                    <span className="todo-date">{new Date().toDateString()}</span>
+                                                    {/* &nbsp;&nbsp;|&nbsp;&nbsp;
+                                                    <span>
+                                                        <button onClick={() => handleUndo(itm.uid)}>Undo</button>
+                                                    </span> */}
+                                                </div>
                                             </div>
 
 

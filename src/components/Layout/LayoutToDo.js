@@ -17,17 +17,17 @@ const LayoutToDo = () => {
         {
             uid: uuidv4(),
             title: "First Test",
-            desc: "A test todo item."
+            completed: false
         },
         {
             uid: uuidv4(),
             title: "Second Test",
-            desc: "A test todo item."
+            completed: false
         },
         {
             uid: uuidv4(),
             title: "Third Test",
-            desc: "A test todo item."
+            completed: false
         }
     ])
 
@@ -66,7 +66,10 @@ const LayoutToDo = () => {
         if (completedItem.length > 0) {
             setCompletedList([
                 ...completedList,
-                { ...completedItem[0] }
+                {
+                    ...completedItem[0],
+                    completed: true
+                }
             ])
 
             deleteTodoItem(completedUID)

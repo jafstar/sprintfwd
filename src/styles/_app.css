@@ -170,10 +170,19 @@ button.btn-clear {
 .list-item-img {
     width: 40px;
     height: 40px;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     border-radius: 40px;
     margin-right: 14px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-item-img img {
+    border-radius: 30px;
+    width: 80%;
+    height: 80%;
 }
 
 .list-item-col-left {
@@ -182,7 +191,7 @@ button.btn-clear {
 }
 
 .list-item-col-center {
-    width: auto;
+    width: 100%;
 }
 
 .list-item-col-right {
