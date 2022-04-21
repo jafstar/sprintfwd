@@ -15,6 +15,7 @@ const ToDos = () => {
 
     const [completedList, setCompletedList] = React.useState([]);
     const [currentInput, setCurrentInput] = React.useState("");
+    const [currentList, setCurrentList] = React.useState("active")
 
     const handleAddBtn = () => {
 
@@ -46,6 +47,9 @@ const ToDos = () => {
         ])
     }
 
+    const handleBtnSwitch = (listType) => {
+        setCurrentList(listType)
+    }
 
 
 
@@ -69,11 +73,16 @@ const ToDos = () => {
                 />
                 <button className="btn-outline" onClick={handleAddBtn}>Add</button>
             </div>
+
+            <div className="btn-switch-shell">
+                <button onClick={() => handleBtnSwitch('active')} className={`btn-switch ${currentList === "active" ? 'switch-active' : 'switch-inactive'}`}>To Do</button>
+                <button onClick={() => handleBtnSwitch('archive')} className={`btn-switch ${currentList === "archive" ? 'switch-active' : 'switch-inactive'}`}>Completed</button>
+            </div>
             <ul>
 
 
                 {
-                    ctx.todoList.length >= 1 && ctx.todoList.map((itm, idx) => {
+                    currentList === "active" && ctx.todoList.length >= 1 && ctx.todoList.map((itm, idx) => {
                         return (
                             <div className="list-item-shell" key={`table-row-${idx}`}>
 
@@ -111,7 +120,7 @@ const ToDos = () => {
                 }
 
                 {
-                    ctx.todoList.length === 0
+                    currentList === "active" && ctx.todoList.length === 0
                         ? (
                             <div className="list-item-none">No items in the list!</div>
                         )
