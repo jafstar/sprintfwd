@@ -17,7 +17,6 @@ const Header = () => {
 
 
     React.useEffect(() => {
-        console.log(routeLocation)
         setCurrentLocation(routeLocation)
     }, [routeLocation])
     return (

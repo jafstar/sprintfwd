@@ -1,9 +1,18 @@
-import * as React from 'react';
+import * as React from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import {
+    Link
+} from "react-router-dom"
+
 import './styles.css'
 
-const ToDos = () => {
+import { ToDosContext } from '../../App'
 
-    const [todoList, setTodoList] = React.useState([]);
+
+const ToDos = () => {
+    const ctx = React.useContext(ToDosContext)
+
+
     const [completedList, setCompletedList] = React.useState([]);
     const [currentInput, setCurrentInput] = React.useState("");
 
@@ -15,10 +24,11 @@ const ToDos = () => {
         }
 
         const newItem = {
+            uid: uuidv4(),
             title: currentInput
         }
-        setTodoList([
-            ...todoList,
+        ctx.setTodoList([
+            ...ctx.todoList,
             newItem
         ])
 
@@ -32,46 +42,16 @@ const ToDos = () => {
     const completeTodoItem = (completedIdx) => {
         setCompletedList([
             ...completedList,
-            { ...todoList[completedIdx] }
-        ])
-        // setTimeout(() => {
-        //     const tmpList = todoList.filter((itm, idx) => {
-        //         return idx !== completedIdx
-        //     })
-
-        //     setTodoList([
-        //         ...tmpList
-        //     ])
-
-        //     setCompletedList([
-        //         ...completedList,
-        //         { ...todoList[completedIdx] }
-        //     ])
-
-
-        // }, 200)
-
-    }
-
-    const deleteTodoItem = (deleteIdx) => {
-        const tmpList = todoList.filter((_, idx) => {
-            return idx !== deleteIdx
-        })
-
-        setTodoList([
-            ...tmpList
+            { ...ctx.todoList[completedIdx] }
         ])
     }
 
-    React.useEffect(() => {
-        setTodoList([{
-            title: "First Test",
-            desc: "A test todo item."
-        }])
-    }, [])
+
+
 
     return (
         <div className="todo-list">
+
             {/* <div id="todo-completed">
                 <span> You have completed {completedList.length} item{completedList.length === 1 ? "" : "s"}</span>
             </div> */}
@@ -91,33 +71,38 @@ const ToDos = () => {
 
 
                 {
-                    todoList.length >= 1 && todoList.map((itm, idx) => {
+                    ctx.todoList.length >= 1 && ctx.todoList.map((itm, idx) => {
                         return (
-                            <div key={`table-row-${idx}`}>
-                                <div className="list-item">
-                                    <div className='list-item-header'>
-                                        <div className="flex">
-                                            <div className='list-item-col-left'>
-                                                <label className="checkbox-shell">
-                                                    <input type="checkbox" onClick={() => completeTodoItem(idx)} />
-                                                    <span className="checkbox-span"></span>
-                                                </label>
-                                            </div>
-                                            <div className='list-item-col-center'>
-                                                <h3>{itm.title}</h3>
-                                                <div className='flex space-between'>
-                                                    <span className="todo-date">{new Date().toDateString()}</span>
+                            <div className="list-item-shell" key={`table-row-${idx}`}>
+                                <Link to={{
+                                    pathname: `/todos/edit/${itm.uid}`
 
+                                }}>
+                                    <div className="list-item">
+                                        <div className='list-item-header'>
+                                            <div className="flex">
+                                                <div className='list-item-col-left'>
+                                                    <label className="checkbox-shell">
+                                                        <input type="checkbox" onClick={() => completeTodoItem(idx)} />
+                                                        <span className="checkbox-span"></span>
+                                                    </label>
+                                                </div>
+                                                <div className='list-item-col-center'>
+                                                    <h3>{itm.title}</h3>
+                                                    <div className='flex space-between'>
+                                                        <span className="todo-date">{new Date().toDateString()}</span>
+
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className='list-item-col-right'>
-                                            <span onClick={() => deleteTodoItem(idx)}>X</span>
+                                            <div className='list-item-col-right'>
+
+                                            </div>
+
                                         </div>
 
-                                    </div>
-
-                                </div >
+                                    </div >
+                                </Link>
 
                             </div>
                         )
@@ -125,7 +110,7 @@ const ToDos = () => {
                 }
 
                 {
-                    todoList.length === 0
+                    ctx.todoList.length === 0
                         ? (
                             <div className="list-item-none">No items in the list!</div>
                         )

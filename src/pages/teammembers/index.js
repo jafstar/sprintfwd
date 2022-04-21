@@ -139,33 +139,25 @@ const DATA = [
 const TeamMembers = () => {
 
     const [teamData, setTeamData] = React.useState([])
-    const params = useParams();
+    const params = useParams()
 
 
     React.useEffect(() => {
-
-
-
-
-
-
         const tmpData = DATA.filter(itm => {
             return Number(itm.team.id) === Number(params.id)
         })
-
-        console.log('params: ', params)
-        console.log('tmpData: ', tmpData)
-
         setTeamData([...tmpData])
     }, [params])
 
 
     return (
         <div>
-            <div className="back-btn">
-                <Link to="/teams">
-                    <span>&lt; Back</span>
-                </Link>
+            <div className="page-header">
+                <div className="back-btn">
+                    <Link to="/teams">
+                        <span>&lt; Back</span>
+                    </Link>
+                </div>
             </div>
             {
                 teamData.length >= 1 && teamData.map((itm, idx) => {

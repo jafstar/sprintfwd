@@ -45,16 +45,17 @@ main {
     filter: blur(0px);
 }
 
-
-.back-btn {
-    margin-bottom: 30px;
+.page-header {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 
 .back-btn a {
     text-decoration: none;
     color: #fff;
-    margin-bottom: 12px;
-
 }
 
 .input-text {
@@ -72,6 +73,20 @@ main {
 button.btn-outline {
     display: block;
     border: 1px solid #fff;
+    background: transparent;
+    text-decoration: none;
+    padding: 16px 32px;
+    text-align: center;
+    border-radius: 8px;
+    color: #fff;
+    text-transform: uppercase;
+    box-sizing: border-box;
+}
+
+.btn-clear a,
+button.btn-clear {
+    display: block;
+    border: none;
     background: transparent;
     text-decoration: none;
     padding: 16px 32px;
@@ -184,4 +199,15 @@ button.btn-outline {
 
 .static-content p {
     margin: 10px 0;
+}
+
+.txt-large {
+    font-size: 24px;
+    color: #fff;
+    margin: 10px 0;
+}
+
+.delete-btn-shell {
+    display: flex;
+    justify-content: center;
 }
