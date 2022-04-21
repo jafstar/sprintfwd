@@ -40,12 +40,21 @@ const Teams = () => {
                             <Link to={`/teams/${itm.id}`}>
                                 <div className="list-item">
                                     <div className='list-item-header'>
-                                        <div className='list-item-img'>
-                                            <img src={`https://ui-avatars.com/api/?name=${itm.name}&background=random`} width="40px" height="40px" className="member-avatar" />
-                                        </div>
-                                        <div>
-                                            <h3>{itm.name}</h3>
-                                            <p># Members: {itm.member_count}</p>
+                                        <div className="flex w100">
+                                            <div className='list-item-col-left'>
+                                                <div className='list-item-img'>
+                                                    <img src={`https://ui-avatars.com/api/?name=${itm.name}&background=random`} width="40px" height="40px" className="member-avatar" />
+                                                </div>
+                                            </div>
+                                            <div className='list-item-col-center'>
+                                                <h3>{itm.name}</h3>
+                                                <p># Members: {itm.member_count}</p>
+                                            </div>
+                                            <div className='list-item-col-right'>
+                                                <div className="next-page-indicator">
+                                                    <i class="gg-chevron-right-o"></i>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
