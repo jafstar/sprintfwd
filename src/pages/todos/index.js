@@ -43,6 +43,12 @@ const ToDos = () => {
         setcurrentListType(listType)
     }
 
+    const handleCompleteItem = (itemUID) => {
+        ctx.completeTodoItem(itemUID)
+        setcurrentListType("archive")
+
+    }
+
 
 
     return (
@@ -84,7 +90,7 @@ const ToDos = () => {
                                             <div className='list-item-col-left'>
 
                                                 <label className="checkbox-shell">
-                                                    <input type="checkbox" onClick={() => ctx.completeTodoItem(itm.uid)} />
+                                                    <input type="checkbox" onClick={() => handleCompleteItem(itm.uid)} />
                                                     <span className="checkbox-span"></span>
                                                 </label>
 

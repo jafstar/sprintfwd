@@ -13,11 +13,23 @@ export const ToDosContext = React.createContext()
 const LayoutToDo = () => {
 
     const [completedList, setCompletedList] = React.useState([])
-    const [todoList, setTodoList] = React.useState([{
-        uid: uuidv4(),
-        title: "First Test",
-        desc: "A test todo item."
-    }])
+    const [todoList, setTodoList] = React.useState([
+        {
+            uid: uuidv4(),
+            title: "First Test",
+            desc: "A test todo item."
+        },
+        {
+            uid: uuidv4(),
+            title: "Second Test",
+            desc: "A test todo item."
+        },
+        {
+            uid: uuidv4(),
+            title: "Third Test",
+            desc: "A test todo item."
+        }
+    ])
 
     const updateList = (updatedItem) => {
 
