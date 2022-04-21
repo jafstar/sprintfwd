@@ -76,35 +76,34 @@ const ToDos = () => {
                     ctx.todoList.length >= 1 && ctx.todoList.map((itm, idx) => {
                         return (
                             <div className="list-item-shell" key={`table-row-${idx}`}>
-                                <Link to={{
-                                    pathname: `/todos/edit/${itm.uid}`
 
-                                }}>
-                                    <div className="list-item">
-                                        <div className='list-item-header'>
-                                            <div className="flex">
-                                                <div className='list-item-col-left'>
-                                                    <label className="checkbox-shell">
-                                                        <input type="checkbox" onClick={() => completeTodoItem(idx)} />
-                                                        <span className="checkbox-span"></span>
-                                                    </label>
-                                                </div>
-                                                <div className='list-item-col-center'>
+                                <div className="list-item">
+                                    <div className='list-item-header'>
+                                        <div className="flex">
+                                            <div className='list-item-col-left'>
+
+                                                <label className="checkbox-shell">
+                                                    <input type="checkbox" onClick={() => completeTodoItem(idx)} />
+                                                    <span className="checkbox-span"></span>
+                                                </label>
+
+                                            </div>
+                                            <div className='list-item-col-center'>
+                                                <Link to={`/todos/edit/${itm.uid}`}>
                                                     <h3>{itm.title}</h3>
                                                     <div className='flex space-between'>
                                                         <span className="todo-date">{new Date().toDateString()}</span>
 
                                                     </div>
-                                                </div>
+                                                </Link>
                                             </div>
-                                            <div className='list-item-col-right'>
-
-                                            </div>
-
                                         </div>
 
-                                    </div >
-                                </Link>
+
+                                    </div>
+
+                                </div >
+
 
                             </div>
                         )
