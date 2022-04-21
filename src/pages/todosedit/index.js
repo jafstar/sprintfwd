@@ -91,7 +91,7 @@ const ToDosEdit = () => {
                         <div id="todo-inputs" className="flex">
                             <input
                                 className="input-text"
-                                type="search"
+                                type="text"
                                 name="inputTodo"
                                 size="20"
                                 placeholder='Edit something epic...'
