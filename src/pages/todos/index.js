@@ -135,7 +135,7 @@ const ToDos = () => {
                                                 </div>
                                                 <div className='list-item-col-right'>
                                                     <div className="next-page-indicator">
-                                                        <i class="gg-chevron-right-o"></i>
+                                                        <i className="gg-chevron-right-o"></i>
                                                     </div>
                                                 </div>
                                             </Link>
