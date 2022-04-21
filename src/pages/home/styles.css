@@ -11,10 +11,10 @@
     overflow: hidden;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 450px) {
     .page-home #logo h1 a {
         font-size: 120px;
-        width: 290px;
+        width: 270px;
         padding-top: 50px;
     }
 
@@ -26,12 +26,29 @@
 
 }
 
+@media (min-width: 451px) and (max-width: 950px) {
+    .page-home #logo h1 a {
+        position: absolute;
+        left: 50%;
+        margin-left: -140px;
+        width: 330px;
+        font-size: 110px;
+        padding-top: 130px;
+    }
+
+    #enter-link {
+        margin: 0px auto;
+        width: 330px;
+        margin-top: 270px;
+    }
+}
+
 @media (min-width: 951px) {
 
     .page-home #logo h1 a {
         position: absolute;
         left: 50%;
-        margin-left: -165px;
+        margin-left: -130px;
         width: 330px;
         font-size: 110px;
         padding-top: 130px;

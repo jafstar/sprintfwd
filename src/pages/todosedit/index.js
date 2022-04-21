@@ -38,7 +38,7 @@ const ToDosEdit = () => {
         // console.log("Edit Item: ", editItem)
 
         ctx.updateList(editItem)
-
+        navigate("/todos")
     }
 
     React.useEffect(() => {
