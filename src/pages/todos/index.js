@@ -6,7 +6,7 @@ import {
 
 import './styles.css'
 
-import { ToDosContext } from '../../components/Layout/LayoutToDo'
+import { ToDosContext } from '../../App'
 
 
 const ToDos = () => {
@@ -90,7 +90,7 @@ const ToDos = () => {
 
                 <input
                     className="input-text"
-                    type="search"
+                    type="text"
                     name="inputTodo"
                     size="20"
                     placeholder='Do something epic...'
