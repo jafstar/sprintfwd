@@ -58,6 +58,15 @@ main {
     color: #fff;
 }
 
+label {
+    color: #fff;
+    padding-bottom: 10px;
+    font-weight: 300;
+    font-size: 18px;
+    display: block;
+    font-variant: small-caps;
+}
+
 .input-text {
     border: 1px solid #fff;
     background: transparent;
@@ -81,6 +90,7 @@ button.btn-outline {
     color: #fff;
     text-transform: uppercase;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .btn-clear a,
@@ -95,6 +105,7 @@ button.btn-clear {
     color: #fff;
     text-transform: uppercase;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .list-item-shell a {

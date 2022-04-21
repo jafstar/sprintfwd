@@ -55,7 +55,9 @@ const ToDos = () => {
             {/* <div id="todo-completed">
                 <span> You have completed {completedList.length} item{completedList.length === 1 ? "" : "s"}</span>
             </div> */}
+            <label htmlFor="inputTodo">Make Your Day</label>
             <div id="todo-inputs" className="flex">
+
                 <input
                     className="input-text"
                     type="search"

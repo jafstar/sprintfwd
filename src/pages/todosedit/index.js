@@ -3,7 +3,7 @@ import React from 'react'
 import {
     Link,
     useParams,
-    useHistory
+    useNavigate
 } from "react-router-dom"
 import { ToDosContext } from '../../App'
 
@@ -12,7 +12,7 @@ const ToDosEdit = () => {
 
     const ctx = React.useContext(ToDosContext)
     const params = useParams()
-    let history = useHistory();
+    let navigate = useNavigate();
 
 
     const [currentToDo, setCurrentToDo] = React.useState(null)
@@ -67,7 +67,7 @@ const ToDosEdit = () => {
             setCurrentToDo(null)
             ctx.deleteTodoItem(uid)
             setCurrentHeaderText("Successfully deleted item")
-            history.push("/todos")
+            navigate("/todos")
         }
 
     }
@@ -105,7 +105,7 @@ const ToDosEdit = () => {
 
                         <div className="delete-btn-shell">
                             {
-                                currentToDo ? <button className="btn-clear" onClick={() => localDelete(currentToDo.uid)}>X Delete</button> : null
+                                currentToDo ? <button className="btn-clear" onClick={() => localDelete(currentToDo.uid)}>X &nbsp; &nbsp; Delete</button> : null
                             }
                         </div>
 
