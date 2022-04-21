@@ -70,6 +70,7 @@ main {
 .back-btn a {
     text-decoration: none;
     color: #fff;
+    padding: 15px 25px 15px 0;
 }
 
 label {
