@@ -12,6 +12,7 @@ export const ToDosContext = React.createContext()
 
 const LayoutToDo = () => {
 
+    const [completedList, setCompletedList] = React.useState([])
     const [todoList, setTodoList] = React.useState([{
         uid: uuidv4(),
         title: "First Test",
@@ -44,6 +45,23 @@ const LayoutToDo = () => {
 
     }
 
+    const completeTodoItem = (completedUID) => {
+
+        const completedItem = todoList.filter(itm => {
+            return itm.uid === completedUID
+        })
+
+        if (completedItem.length > 0) {
+            setCompletedList([
+                ...completedList,
+                { ...completedItem[0] }
+            ])
+
+            deleteTodoItem(completedUID)
+        }
+
+    }
+
 
 
 
@@ -54,7 +72,9 @@ const LayoutToDo = () => {
                     todoList,
                     setTodoList,
                     updateList,
-                    deleteTodoItem
+                    deleteTodoItem,
+                    completedList,
+                    completeTodoItem
                 }}
             >
                 <Header />

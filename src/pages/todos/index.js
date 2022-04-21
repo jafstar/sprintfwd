@@ -13,9 +13,8 @@ const ToDos = () => {
     const ctx = React.useContext(ToDosContext)
 
 
-    const [completedList, setCompletedList] = React.useState([]);
     const [currentInput, setCurrentInput] = React.useState("");
-    const [currentList, setCurrentList] = React.useState("active")
+    const [currentListType, setcurrentListType] = React.useState("active")
 
     const handleAddBtn = () => {
 
@@ -40,15 +39,8 @@ const ToDos = () => {
         setCurrentInput(val);
     }
 
-    const completeTodoItem = (completedIdx) => {
-        setCompletedList([
-            ...completedList,
-            { ...ctx.todoList[completedIdx] }
-        ])
-    }
-
     const handleBtnSwitch = (listType) => {
-        setCurrentList(listType)
+        setcurrentListType(listType)
     }
 
 
@@ -75,14 +67,14 @@ const ToDos = () => {
             </div>
 
             <div className="btn-switch-shell">
-                <button onClick={() => handleBtnSwitch('active')} className={`btn-switch ${currentList === "active" ? 'switch-active' : 'switch-inactive'}`}>To Do</button>
-                <button onClick={() => handleBtnSwitch('archive')} className={`btn-switch ${currentList === "archive" ? 'switch-active' : 'switch-inactive'}`}>Completed</button>
+                <button onClick={() => handleBtnSwitch('active')} className={`btn-switch ${currentListType === "active" ? 'switch-active' : 'switch-inactive'}`}>To Do</button>
+                <button onClick={() => handleBtnSwitch('archive')} className={`btn-switch ${currentListType === "archive" ? 'switch-active' : 'switch-inactive'}`}>Completed</button>
             </div>
-            <ul>
+            <div>
 
 
                 {
-                    currentList === "active" && ctx.todoList.length >= 1 && ctx.todoList.map((itm, idx) => {
+                    currentListType === "active" && ctx.todoList.length >= 1 && ctx.todoList.map((itm, idx) => {
                         return (
                             <div className="list-item-shell" key={`table-row-${idx}`}>
 
@@ -92,7 +84,7 @@ const ToDos = () => {
                                             <div className='list-item-col-left'>
 
                                                 <label className="checkbox-shell">
-                                                    <input type="checkbox" onClick={() => completeTodoItem(idx)} />
+                                                    <input type="checkbox" onClick={() => ctx.completeTodoItem(itm.uid)} />
                                                     <span className="checkbox-span"></span>
                                                 </label>
 
@@ -111,7 +103,7 @@ const ToDos = () => {
 
                                     </div>
 
-                                </div >
+                                </div>
 
 
                             </div>
@@ -120,15 +112,51 @@ const ToDos = () => {
                 }
 
                 {
-                    currentList === "active" && ctx.todoList.length === 0
+                    currentListType === "active" && ctx.todoList.length === 0
                         ? (
                             <div className="list-item-none">No items in the list!</div>
                         )
                         : null
                 }
-            </ul>
+            </div>
 
 
+            <div>
+                <ul>
+                    {
+                        currentListType === "archive" && ctx.completedList.length >= 1 && ctx.completedList.map((itm, idx) => {
+                            return (
+                                <li key={`completed-item-idx`}>
+                                    <div className="list-item">
+                                        <div className='list-item-header'>
+
+
+                                            <div className='flex space-between align-center w100'>
+                                                <h3>{itm.title}</h3>
+                                                <span className="todo-date">{new Date().toDateString()}</span>
+
+                                            </div>
+
+
+
+
+                                        </div>
+
+                                    </div >
+
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+                {
+                    currentListType === "archive" && ctx.completedList.length === 0
+                        ? (
+                            <div className="list-item-none">You need to do something!</div>
+                        )
+                        : null
+                }
+            </div>
 
 
         </div>
