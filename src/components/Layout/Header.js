@@ -62,7 +62,7 @@ const Header = () => {
                                     <li>
                                         <NavLink to="/members">
                                             <div className="menu-icon-text">
-                                                <i className="gg-user-list"></i>
+                                                <i className="gg-user"></i>
                                                 <span>Members</span>
                                             </div>
                                         </NavLink>
