@@ -11,11 +11,12 @@
     overflow: hidden;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 950px) {
     .page-home #logo h1 a {
         font-size: 120px;
         width: 270px;
         padding-top: 50px;
+        font-size: 100px;
     }
 
     #enter-link {
@@ -26,7 +27,7 @@
 
 }
 
-@media (min-width: 451px) and (max-width: 950px) {
+@media (min-width: 651px) and (max-width: 950px) {
     .page-home #logo h1 a {
         position: absolute;
         left: 50%;
