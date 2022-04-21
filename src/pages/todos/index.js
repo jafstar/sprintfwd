@@ -47,7 +47,7 @@ const ToDos = () => {
 
         setTimeout(() => {
             ctx.completeTodoItem(itemUID)
-            setcurrentListType("archive")
+            setcurrentListType("archive") // Cheap Fix for checkbox bug
         }, 400)
 
 
@@ -136,7 +136,7 @@ const ToDos = () => {
                     {
                         currentListType === "archive" && ctx.completedList.length >= 1 && ctx.completedList.map((itm, idx) => {
                             return (
-                                <li key={`completed-item-idx`}>
+                                <li key={`completed-item-${idx}`}>
                                     <div className="list-item">
                                         <div className='list-item-header'>
 
