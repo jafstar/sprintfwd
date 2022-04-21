@@ -123,20 +123,22 @@ const ToDos = () => {
                                                 </label>
 
                                             </div>
-                                            <div className='list-item-col-center'>
-                                                <Link to={`/todos/edit/${itm.uid}`}>
+                                            <Link className='flex space-between w100' to={`/todos/edit/${itm.uid}`}>
+                                                <div className='list-item-col-center'>
+
                                                     <h3>{itm.title}</h3>
                                                     <div className='flex space-between'>
                                                         <span className="todo-date">{new Date().toDateString()}</span>
 
                                                     </div>
-                                                </Link>
-                                            </div>
-                                            <div className='list-item-col-right'>
-                                                <div className="next-page-indicator">
-                                                    <i class="gg-chevron-right-o"></i>
+
                                                 </div>
-                                            </div>
+                                                <div className='list-item-col-right'>
+                                                    <div className="next-page-indicator">
+                                                        <i class="gg-chevron-right-o"></i>
+                                                    </div>
+                                                </div>
+                                            </Link>
                                         </div>
 
 
