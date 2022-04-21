@@ -44,8 +44,12 @@ const ToDos = () => {
     }
 
     const handleCompleteItem = (itemUID) => {
-        ctx.completeTodoItem(itemUID)
-        setcurrentListType("archive")
+
+        setTimeout(() => {
+            ctx.completeTodoItem(itemUID)
+            setcurrentListType("archive")
+        }, 400)
+
 
     }
 
